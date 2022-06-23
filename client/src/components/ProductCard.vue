@@ -1,5 +1,8 @@
 <template>
-    <div class="product">product title: {{ product.title }}</div>
+    <div class="product">
+        <img :src="product.image" />
+        <!-- <h2>{{ product.title }}</h2> -->
+    </div>
 </template>
 
 <script>
