@@ -21,6 +21,11 @@ export const routes = [
         // which is lazy-loaded when the route is visited.
         component: () => import('../views/About.vue'),
     },
+    {
+        path: '/contact',
+        name: 'contact',
+        component: () => import('../views/Contact.vue'),
+    },
 ];
 
 //Setting up the Router Instance
