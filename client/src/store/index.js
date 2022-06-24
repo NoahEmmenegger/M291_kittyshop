@@ -34,6 +34,6 @@ export default new Vuex.Store({
                 description: 'Lorem ipsum',
             },
         ],
-        cart: [1, 3, 4],
+        cart: [1, 3, 4, 1],
     },
 });
