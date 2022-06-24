@@ -84,8 +84,8 @@ h1 {
 
     .modal {
         position: absolute;
-        height: 500px;
         background-color: white;
+        padding: 30px;
         width: 300px;
         right: 0;
         top: 50px;
@@ -95,6 +95,7 @@ h1 {
 
     .table {
         width: 100%;
+        margin-top: 50px;
 
         .cartItem {
             display: flex;
@@ -102,7 +103,6 @@ h1 {
             align-items: center;
             padding: 10px;
             border-bottom: 1px solid #e6e6e6;
-            cursor: pointer;
         }
 
         .headerRow {
@@ -111,9 +111,23 @@ h1 {
             align-items: center;
             padding: 10px;
             border-bottom: 1px solid #e6e6e6;
-            cursor: pointer;
             font-weight: bold;
         }
+    }
+
+    .total {
+        justify-content: space-between;
+        margin: 50px 0px;
+        display: flex;
+    }
+
+    button {
+        background-color: #42b983;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
     }
 }
 

@@ -7,7 +7,7 @@
                 {{ getCartTotalProducts }} Products in your cart with a total value of CHF {{ getCartTotal.toFixed(2) }}
             </p>
 
-            <div class="table">
+            <div class="table" v-if="getCartTotal !== 0">
                 <div class="headerRow">
                     <div>Artikel</div>
                     <div>Menge</div>
@@ -16,10 +16,15 @@
                     <CartItem :cartItem="item" />
                 </div>
             </div>
-
-            <div>
-                <b>TOTAL</b>
+            <div class="table" v-else>
+                <b>Your cart is empty.</b>
             </div>
+
+            <div class="total">
+                <b>TOTAL</b>
+                <b>{{ getCartTotal.toFixed(2) }} CHF</b>
+            </div>
+            <button @click="alert('message')">Checkout now!</button>
         </div>
     </div>
 </template>
@@ -42,7 +47,7 @@ export default {
     },
     data() {
         return {
-            isModalOpen: true,
+            isModalOpen: false,
         };
     },
     methods: {
