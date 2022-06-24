@@ -9,7 +9,7 @@ Vue.use(VueRouter);
 //Defining the Routes (Slide-2)
 export const routes = [
     {
-        path: '/home',
+        path: '/',
         name: 'home',
         component: Home,
     },

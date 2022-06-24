@@ -1,7 +1,10 @@
 <template>
     <div class="product">
         <img :src="product.image" />
-        <!-- <h2>{{ product.title }}</h2> -->
+        <div class="info">
+            <p>$ {{ product.price }}</p>
+            <h2>{{ product.title }}</h2>
+        </div>
     </div>
 </template>
 

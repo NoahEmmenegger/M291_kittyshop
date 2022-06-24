@@ -2,15 +2,36 @@
     display: flex;
     flex-wrap: wrap;
     flex-grow: 3;
+    justify-content: space-between;
+    margin: 40px;
 }
 
 .product {
-    background-color: red;
     width: 33%;
+    position: relative;
+    margin: 100px 0px;
 
     img {
-        width: 100%;
-        height: 100%;
+        width: 25vw;
+        height: 25vw;
         object-fit: cover;
+    }
+
+    .info {
+        background-color: white;
+        position: absolute;
+        bottom: -120px;
+        width: 40%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+        padding: 50px;
+
+        p {
+            font-size: 2rem;
+            font-weight: bold;
+            color: black;
+            margin: 0;
+        }
     }
 }
