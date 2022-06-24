@@ -52,6 +52,11 @@ export default new Vuex.Store({
                 return total + product.price * item.amount;
             }, 0);
         },
+        getCartTotalProducts(state) {
+            return state.cart.reduce((total, item) => {
+                return total + item.amount;
+            }, 0);
+        },
     },
     mutations: {
         addToCart: (state, productId) => {

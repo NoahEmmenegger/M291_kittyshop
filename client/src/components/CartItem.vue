@@ -1,6 +1,7 @@
 <template>
     <div class="cartItem" :set="(product = products.find((p) => p.id === cartItem.productId))">
         <div>{{ product.title }}</div>
+        <div>{{ product.price.toFixed(2) }} CHF</div>
         <div>
             <button @click="removeFromCart(product.id)">-</button>
             <span>{{ cartItem.amount }}</span>
@@ -10,7 +11,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
     name: 'CartItem',

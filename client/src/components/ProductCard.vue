@@ -20,5 +20,10 @@ export default {
             required: true,
         },
     },
+    methods: {
+        addToCart() {
+            this.$store.commit('addToCart', this.product.id);
+        },
+    },
 };
 </script>

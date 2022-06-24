@@ -1,9 +1,11 @@
 <template>
     <div id="cart">
         <img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/shopping-cart-256.png" @click="toggleModal" />
-        <p @click="toggleModal">Cart ({{ cart.length }})</p>
+        <p @click="toggleModal">Cart ({{ getCartTotalProducts }})</p>
         <div class="modal" ref="modal" v-if="isModalOpen">
-            <p>{{ cart.length }} Products in your cart with a total value of CHF {{ getCartTotal.toFixed(2) }}</p>
+            <p>
+                {{ getCartTotalProducts }} Products in your cart with a total value of CHF {{ getCartTotal.toFixed(2) }}
+            </p>
 
             <div class="table">
                 <div class="headerRow">
@@ -13,6 +15,10 @@
                 <div v-for="(item, idx) in cart" :key="idx">
                     <CartItem :cartItem="item" />
                 </div>
+            </div>
+
+            <div>
+                <b>TOTAL</b>
             </div>
         </div>
     </div>
@@ -31,6 +37,7 @@ export default {
         }),
         ...mapGetters({
             getCartTotal: 'getCartTotal',
+            getCartTotalProducts: 'getCartTotalProducts',
         }),
     },
     data() {
