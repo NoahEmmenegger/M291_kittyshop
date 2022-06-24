@@ -1,7 +1,5 @@
 <template>
     <div>
-        <h1>HOME</h1>
-
         <Products />
     </div>
 </template>

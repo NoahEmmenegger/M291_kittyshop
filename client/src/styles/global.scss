@@ -125,3 +125,33 @@ h1 {
         margin: auto;
     }
 }
+
+.person {
+    display: flex;
+    margin: 50px 250px;
+    width: 25vw;
+
+    position: relative;
+    img {
+        width: 25vw;
+        height: 25vw;
+        object-fit: cover;
+        object-position: left;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    }
+
+    div {
+        background-color: white;
+        position: absolute;
+        left: 90%;
+        top: 50%;
+        width: 150%;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+        transform: translate(0, -50%);
+        padding: 50px;
+
+        h1 {
+            font-size: 3vw;
+        }
+    }
+}

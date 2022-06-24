@@ -7,9 +7,9 @@ export default new Vuex.Store({
         products: [
             {
                 id: 1,
-                title: 'door',
+                title: 'catdoor',
                 price: 10,
-                image: 'https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_960_720.jpg',
+                image: 'https://m.media-amazon.com/images/I/81ytZrF6PYL._AC_SL1500_.jpg',
                 description: 'Lorem ipsum',
             },
             {
