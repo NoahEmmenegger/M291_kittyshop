@@ -4,6 +4,9 @@
         <div class="info">
             <p>$ {{ product.price }}</p>
             <h2>{{ product.title }}</h2>
+            <div>
+                <button @click="addToCart">Add to cart</button>
+            </div>
         </div>
     </div>
 </template>
