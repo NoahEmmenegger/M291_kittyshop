@@ -16,8 +16,11 @@
                     <CartItem :cartItem="item" />
                 </div>
             </div>
-            <div class="table" v-else>
+            <div class="table" v-else-if="getCartTotal === 0">
                 <b>Your cart is empty.</b>
+            </div>
+            <div class="table" v-else>
+                <b>Loading...</b>
             </div>
 
             <div class="total">
