@@ -34,6 +34,41 @@ export default new Vuex.Store({
                 description: 'Lorem ipsum',
             },
         ],
-        cart: [1, 3, 4, 1],
+        cart: [
+            {
+                productId: 1,
+                amount: 2,
+            },
+            {
+                productId: 2,
+                amount: 1,
+            },
+        ],
+    },
+    getters: {
+        getCartTotal(state) {
+            return state.cart.reduce((total, item) => {
+                let product = state.products.find((product) => product.id === item.productId);
+                return total + product.price * item.amount;
+            }, 0);
+        },
+    },
+    mutations: {
+        addToCart: (state, productId) => {
+            console.log(productId);
+            let index = state.cart.findIndex((p) => p.id === productId);
+            if (index !== -1) {
+                state.cart[index].amount++;
+            } else {
+                state.cart.push({ productId: productId, amount: 1 });
+            }
+        },
+        removeFromCart: (state, productId) => {
+            let index = state.cart.findIndex((p) => p.id === productId);
+            if (index !== -1) {
+                state.cart[index].amount--;
+                if (state.cart[index].amount === 0) state.cart.splice(index, 1);
+            }
+        },
     },
 });
