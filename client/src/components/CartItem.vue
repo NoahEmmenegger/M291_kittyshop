@@ -2,7 +2,7 @@
     <div class="cartItem" :set="(product = products.find((p) => p.id === cartItem.productId))">
         <div>{{ product.title }}</div>
         <div>
-            <button>-</button>
+            <button @click="removeFromCart(product.id)">-</button>
             <span>{{ cartItem.amount }}</span>
             <button @click="addToCart(product.id)">+</button>
         </div>
@@ -28,6 +28,9 @@ export default {
     methods: {
         addToCart(productId) {
             this.$store.commit('addToCart', productId);
+        },
+        removeFromCart(productId) {
+            this.$store.commit('removeFromCart', productId);
         },
     },
 };

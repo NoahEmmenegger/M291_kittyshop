@@ -55,8 +55,7 @@ export default new Vuex.Store({
     },
     mutations: {
         addToCart: (state, productId) => {
-            console.log(productId);
-            let index = state.cart.findIndex((p) => p.id === productId);
+            let index = state.cart.findIndex((p) => p.productId === productId);
             if (index !== -1) {
                 state.cart[index].amount++;
             } else {
@@ -64,7 +63,7 @@ export default new Vuex.Store({
             }
         },
         removeFromCart: (state, productId) => {
-            let index = state.cart.findIndex((p) => p.id === productId);
+            let index = state.cart.findIndex((p) => p.productId === productId);
             if (index !== -1) {
                 state.cart[index].amount--;
                 if (state.cart[index].amount === 0) state.cart.splice(index, 1);

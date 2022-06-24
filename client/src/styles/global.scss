@@ -78,6 +78,10 @@ h1 {
         margin: auto;
     }
 
+    p:hover {
+        text-decoration: underline;
+    }
+
     .modal {
         position: absolute;
         height: 500px;
