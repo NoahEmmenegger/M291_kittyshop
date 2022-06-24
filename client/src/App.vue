@@ -14,16 +14,20 @@
                 <router-link :to="{ name: 'about', params: { user: 'of Hans Muster' } }">About</router-link> |
                 <router-link to="/contact">Contact</router-link>
             </div>
-            <div id="cart">
-                <img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/shopping-cart-256.png" />
-                <p>Cart (2)</p>
-            </div>
+            <Cart />
         </div>
 
         <router-view />
         <MyNavigation />
     </div>
 </template>
+
+<script>
+import Cart from './components/Cart.vue';
+export default {
+    components: { Cart },
+};
+</script>
 
 <style lang="scss">
 //Import of global-style
