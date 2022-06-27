@@ -56,15 +56,13 @@ export default {
                     email,
                     message,
                 }),
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    if (data.success) {
-                        alert('Message sent!');
-                    } else {
-                        alert('Error sending message!');
-                    }
-                });
+            }).then((data) => {
+                if (data.status === 200) {
+                    alert('Message sent!');
+                } else {
+                    alert('Error sending message!');
+                }
+            });
         },
     },
 };
