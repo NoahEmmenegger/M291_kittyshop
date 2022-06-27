@@ -39,12 +39,12 @@ export default {
             const email = e.target.email.value;
             const message = e.target.message.value;
 
-            // const errorMessage = validate(name, email, message);
+            const errorMessage = validate(name, email, message);
 
-            // if (errorMessage) {
-            //     alert(errorMessage);
-            //     return;
-            // }
+            if (errorMessage) {
+                alert(errorMessage);
+                return;
+            }
 
             fetch('http://localhost:3000/api/contact', {
                 method: 'POST',
