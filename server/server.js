@@ -3,6 +3,8 @@ Multipurpose Server
  */
 
 let express = require('express');
+var bodyParser = require('body-parser');
+
 let app = express();
 const port = process.env.PORT || 3000;
 
@@ -24,6 +26,8 @@ let corsOptions = {
     origin: 'http://localhost:8080',
 };
 app.use(cors(corsOptions));
+
+app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
     res.header('Content-Type', 'application/json');
@@ -123,3 +127,38 @@ app.get('/v1/marks/:id', (req, res) => {
         }
     });
 });
+
+app.post('/api/contact', (req, res) => {
+    let name = req.body?.name;
+    let email = req.body?.email;
+    let message = req.body?.message;
+    let error = validate(name, email, message);
+    if (error) {
+        res.status(400).send(error);
+    } else {
+        res.send('OK');
+    }
+});
+
+const validate = (name, email, message) => {
+    if (name === '') {
+        return 'Name is required';
+    }
+    if (email === '') {
+        return 'Email is required';
+    }
+    if (email !== '' && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+        return 'Invalid email address';
+    }
+    if (message === '') {
+        return 'Message is required';
+    }
+    if (message.length < 10) {
+        return 'Message must be at least 10 characters';
+    }
+    if (message.length > 500) {
+        return 'Message must be less than 500 characters';
+    }
+
+    return '';
+};

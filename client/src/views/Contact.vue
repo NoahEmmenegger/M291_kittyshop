@@ -10,5 +10,62 @@
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
+        <h2>Send us a message!</h2>
+        <form @submit="sendForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" />
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 </template>
+<script>
+import validate from '../utils/validate';
+export default {
+    methods: {
+        sendForm(e) {
+            e.preventDefault();
+
+            const name = e.target.name.value;
+            const email = e.target.email.value;
+            const message = e.target.message.value;
+
+            // const errorMessage = validate(name, email, message);
+
+            // if (errorMessage) {
+            //     alert(errorMessage);
+            //     return;
+            // }
+
+            fetch('http://localhost:3000/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    message,
+                }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.success) {
+                        alert('Message sent!');
+                    } else {
+                        alert('Error sending message!');
+                    }
+                });
+        },
+    },
+};
+</script>
