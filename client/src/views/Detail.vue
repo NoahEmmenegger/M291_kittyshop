@@ -13,6 +13,9 @@
                 <h1>{{ product.title }}</h1>
                 <p>{{ product.description }}</p>
                 <p>{{ product.price }} CHF</p>
+                <div>
+                    <button @click="addToCart">Add to cart</button>
+                </div>
             </div>
         </div>
     </div>
@@ -28,6 +31,18 @@ export default {
         getProduct(this.$route.params.id).then((product) => {
             this.product = product;
         });
+    },
+    watch: {
+        $route(to, from) {
+            getProduct(this.$route.params.id).then((product) => {
+                this.product = product;
+            });
+        },
+    },
+    methods: {
+        addToCart() {
+            this.$store.commit('addToCart', this.product.id);
+        },
     },
     data() {
         return {
