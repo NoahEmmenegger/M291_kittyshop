@@ -43,3 +43,25 @@
         }
     }
 }
+
+.productDetail {
+    margin: 100px;
+    display: flex;
+
+    img {
+        width: 30vw;
+        height: 30vw;
+        object-fit: cover;
+    }
+
+    div {
+        width: 60%;
+        padding: 50px;
+        background-color: white;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        color: black;
+    }
+}

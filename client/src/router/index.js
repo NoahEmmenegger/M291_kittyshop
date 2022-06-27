@@ -14,6 +14,11 @@ export const routes = [
         component: Home,
     },
     {
+        path: '/detail/:id',
+        name: 'detail',
+        component: () => import('../views/Detail.vue'),
+    },
+    {
         path: '/about',
         name: 'about',
         // route level code-splitting
@@ -25,6 +30,10 @@ export const routes = [
         path: '/contact',
         name: 'contact',
         component: () => import('../views/Contact.vue'),
+    },
+    {
+        path: '*',
+        component: () => import('../views/PageNotFound.vue'),
     },
 ];
 

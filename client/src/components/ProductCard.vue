@@ -1,9 +1,13 @@
 <template>
     <div class="product">
-        <img :src="product.image" />
+        <router-link :to="`/detail/${product.id}`">
+            <img :src="product.image" />
+        </router-link>
         <div class="info">
             <p>$ {{ product.price }}</p>
-            <h2>{{ product.title }}</h2>
+            <router-link :to="`/detail/${product.id}`">
+                <h2>{{ product.title }}</h2>
+            </router-link>
             <div>
                 <button @click="addToCart">Add to cart</button>
             </div>
