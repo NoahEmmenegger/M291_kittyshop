@@ -19,13 +19,15 @@
 
         <router-view />
         <MyNavigation />
+        <CustomFooter />
     </div>
 </template>
 
 <script>
 import Cart from './components/Cart.vue';
+import CustomFooter from './components/CustomFooter.vue';
 export default {
-    components: { Cart },
+    components: { Cart, CustomFooter },
 };
 </script>
 

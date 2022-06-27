@@ -2,7 +2,6 @@
 
 body {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    margin: 30px;
     //background-image: url('assets/bg.jpg');
     //background-size: cover;
 }
@@ -103,6 +102,10 @@ h1 {
             align-items: center;
             padding: 10px;
             border-bottom: 1px solid #e6e6e6;
+
+            span {
+                margin: 0px 5px;
+            }
         }
 
         .headerRow {
@@ -181,4 +184,35 @@ h1 {
     font-weight: bold;
     color: #42b983;
     cursor: text;
+}
+
+footer {
+    bottom: 0;
+    background-color: #42b983;
+    border-radius: 10px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5vw;
+    font-weight: bold;
+    margin-top: 100px;
+
+    li {
+        list-style-type: none;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .social {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
