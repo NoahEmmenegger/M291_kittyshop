@@ -1,7 +1,30 @@
 [
-  {"name": "Bleistifte (pro Stck.)", "price": 1.50},
-  {"name": "Notizpapier (100 Seiten)", "price": 2.00},
-  {"name": "Kugelschreiber (pro Stck.)", "price": 3.00},
-  {"name": "Mäppchen (à 10 Stck.)", "price": 3.50 },
-  {"name": "Batterien AA  (4 Stck.)", "price": 7.00}
+    {
+        "id": 1,
+        "title": "catdoor",
+        "price": 10,
+        "image": "https://m.media-amazon.com/images/I/81ytZrF6PYL._AC_SL1500_.jpg",
+        "description": "Lorem ipsum"
+    },
+    {
+        "id": 2,
+        "title": "collar",
+        "price": 20,
+        "image": "https://cdn.pixabay.com/photo/2018/03/03/21/40/cat-3196660_960_720.jpg",
+        "description": "Lorem ipsum"
+    },
+    {
+        "id": 3,
+        "title": "bowl",
+        "price": 30,
+        "image": "https://cdn.pixabay.com/photo/2015/08/10/04/58/pet-882446_960_720.jpg",
+        "description": "Lorem ipsum"
+    },
+    {
+        "id": 4,
+        "title": "food",
+        "price": 40,
+        "image": "https://cdn.pixabay.com/photo/2019/07/30/09/51/cats-4372525_960_720.jpg",
+        "description": "Lorem ipsum"
+    }
 ]

@@ -1,49 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { getProducts } from '../utils/product';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        products: [
-            {
-                id: 1,
-                title: 'catdoor',
-                price: 10,
-                image: 'https://m.media-amazon.com/images/I/81ytZrF6PYL._AC_SL1500_.jpg',
-                description: 'Lorem ipsum',
-            },
-            {
-                id: 2,
-                title: 'collar',
-                price: 20,
-                image: 'https://cdn.pixabay.com/photo/2018/03/03/21/40/cat-3196660_960_720.jpg',
-                description: 'Lorem ipsum',
-            },
-            {
-                id: 3,
-                title: 'bowl',
-                price: 30,
-                image: 'https://cdn.pixabay.com/photo/2015/08/10/04/58/pet-882446_960_720.jpg',
-                description: 'Lorem ipsum',
-            },
-            {
-                id: 4,
-                title: 'food',
-                price: 40,
-                image: 'https://cdn.pixabay.com/photo/2019/07/30/09/51/cats-4372525_960_720.jpg',
-                description: 'Lorem ipsum',
-            },
-        ],
-        cart: [
-            {
-                productId: 1,
-                amount: 2,
-            },
-            {
-                productId: 2,
-                amount: 1,
-            },
-        ],
+        products: [],
+        cart: [],
     },
     getters: {
         getCartTotal(state) {
@@ -59,6 +22,9 @@ export default new Vuex.Store({
         },
     },
     mutations: {
+        setProducts(state, products) {
+            state.products = products;
+        },
         addToCart: (state, productId) => {
             let index = state.cart.findIndex((p) => p.productId === productId);
             if (index !== -1) {
@@ -73,6 +39,11 @@ export default new Vuex.Store({
                 state.cart[index].amount--;
                 if (state.cart[index].amount === 0) state.cart.splice(index, 1);
             }
+        },
+    },
+    actions: {
+        fetchProducts: async (context) => {
+            context.commit('setProducts', await getProducts());
         },
     },
 });

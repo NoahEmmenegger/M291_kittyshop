@@ -2,8 +2,8 @@
 Multipurpose Server
  */
 
-let express = require("express");
-let app     = express();
+let express = require('express');
+let app = express();
 const port = process.env.PORT || 3000;
 
 const server = app.listen(port);
@@ -18,11 +18,10 @@ const path = require('path');
 //Warning: Korrekt setzen!!
 const staticPath = './data/';
 
-
 //Handle CORS Requests
-const cors = require("cors");
+const cors = require('cors');
 let corsOptions = {
-    origin: "http://localhost:8080"
+    origin: 'http://localhost:8080',
 };
 app.use(cors(corsOptions));
 
@@ -32,15 +31,14 @@ app.use(function (req, res, next) {
 });
 
 app.get('/test', (req, res) => {
-    let fileLoc = path.resolve(staticPath+'test.txt');
-    fs.readFile(fileLoc, 'utf8',
-        (err, text) => {
-            res.send(text);
+    let fileLoc = path.resolve(staticPath + 'test.txt');
+    fs.readFile(fileLoc, 'utf8', (err, text) => {
+        res.send(text);
     });
 });
 
 app.get('/v1/products', (req, res) => {
-    let fileLoc = path.resolve(staticPath+'products-1.json');
+    let fileLoc = path.resolve(staticPath + 'products-1.json');
     fs.readFile(fileLoc, 'utf8', (error, text) => {
         if (error) {
             console.error(`Fehler und hier die Fehlermeldung: ${error}`);
@@ -56,8 +54,30 @@ app.get('/v1/products', (req, res) => {
     });
 });
 
+app.get('/v1/product/:id', (req, res) => {
+    let fileLoc = path.resolve(staticPath + 'products-1.json');
+    fs.readFile(fileLoc, 'utf8', (error, text) => {
+        if (error) {
+            console.error(`Fehler und hier die Fehlermeldung: ${error}`);
+            res.send(`Ein Fehler ist passiert! Benachrichtigen Sie den Admin.`);
+        } else {
+            try {
+                let products = JSON.parse(text);
+                let product = products.find((p) => p.id.toString() === req.params.id);
+                if (product) {
+                    res.send(JSON.stringify(product));
+                } else {
+                    res.send(`Product with id ${req.params.id} not found`);
+                }
+            } catch (e) {
+                console.error('Invalid JSON in file');
+            }
+        }
+    });
+});
+
 app.get('/v1/marks/:id', (req, res) => {
-    let fileLoc = path.resolve(staticPath+'marks-1.json');
+    let fileLoc = path.resolve(staticPath + 'marks-1.json');
     //student-ID
     let sid = req.params.id;
 
@@ -68,30 +88,31 @@ app.get('/v1/marks/:id', (req, res) => {
             try {
                 const obj = JSON.parse(text);
                 let studentData = {};
-                studentData.sid = "DOES NOT EXIST!";
-                for (let row in obj.marks_school){
-                    if (obj.marks_school[row].sid === parseInt(sid)){
+                studentData.sid = 'DOES NOT EXIST!';
+                for (let row in obj.marks_school) {
+                    if (obj.marks_school[row].sid === parseInt(sid)) {
                         //set student ID
                         studentData.sid = obj.marks_school[row].sid;
                         //init moduleList (array) for storing module
                         studentData.moduleList = [];
                         let counter = 0;
                         let sum = 0;
-                        for (let mod in obj.marks_school[row].modules){
+                        for (let mod in obj.marks_school[row].modules) {
                             let module = obj.marks_school[row].modules[mod];
                             //create specific module object
                             let marks = {
-                                "mid": module.mid,
-                                "title": module.title,
-                                "mark": Number(module.mark).toFixed(2)
+                                mid: module.mid,
+                                title: module.title,
+                                mark: Number(module.mark).toFixed(2),
                             };
                             //save module object
                             studentData.moduleList.push(marks);
                             //compute sum of all marks in json-file
-                            sum += parseFloat(module.mark); counter++;
+                            sum += parseFloat(module.mark);
+                            counter++;
                         }
                         //save computed average
-                        studentData.average = (sum/counter).toFixed(2);
+                        studentData.average = (sum / counter).toFixed(2);
                         break;
                     }
                 }
@@ -103,4 +124,3 @@ app.get('/v1/marks/:id', (req, res) => {
         }
     });
 });
-

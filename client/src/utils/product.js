@@ -1,11 +1,11 @@
-let baseUrl = 'http://localhost:3000/api/';
+let baseUrl = 'http://localhost:3000/v1';
 
-export function getProducts() {
-    fetch(`${baseUrl}/products`)
-        .then((response) => {
-            return response.json();
+export async function getProducts() {
+    return await fetch(`${baseUrl}/products`)
+        .then(async (response) => {
+            return await response.json();
         })
-        .then((data) => {
+        .then(async (data) => {
             return data;
         })
         .catch((error) => {
@@ -13,21 +13,12 @@ export function getProducts() {
         });
 }
 
-export function getProduct(id) {
-    return new Promise((resolve, reject) => {
-        resolve({
-            id: 1,
-            name: 'Product 1',
-            price: '$100',
-            description: 'This is a product description',
-            image: 'https://picsum.photos/200/300',
-        });
-    });
-    fetch(`${baseUrl}/products/${id}`)
-        .then((response) => {
-            return response.json();
+export async function getProduct(id) {
+    return await fetch(`${baseUrl}/product/${id}`)
+        .then(async (response) => {
+            return await response.json();
         })
-        .then((data) => {
+        .then(async (data) => {
             return data;
         })
         .catch((error) => {

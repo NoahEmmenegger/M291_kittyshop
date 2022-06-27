@@ -40,5 +40,8 @@ export default {
             console.log(this.searchText);
         },
     },
+    created() {
+        this.$store.dispatch('fetchProducts');
+    },
 };
 </script>
