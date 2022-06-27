@@ -1,7 +1,14 @@
 <template>
     <div>
         <input class="searchInput" @keyup="onChange" type="text" placeholder="Search..." />
-        <div class="products">
+
+        <div v-if="!products">
+            <Loading />
+        </div>
+        <div v-else-if="products.filter((p) => p.title.includes(searchText)).length === 0">
+            <p>No products found.</p>
+        </div>
+        <div class="products" v-else>
             <ProductCard
                 v-for="(product, idx) in products.filter((p) => p.title.includes(searchText))"
                 :key="idx"
@@ -9,15 +16,13 @@
             >
             </ProductCard>
         </div>
-        <div v-if="products.filter((p) => p.title.includes(searchText)).length === 0">
-            <p>No products found.</p>
-        </div>
     </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import ProductCard from './ProductCard.vue';
+import Loading from './common/Loading.vue';
 
 export default {
     name: 'Products',
@@ -28,6 +33,7 @@ export default {
     },
     components: {
         ProductCard,
+        Loading,
     },
     data() {
         return {

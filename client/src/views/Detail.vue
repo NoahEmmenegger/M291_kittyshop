@@ -1,7 +1,13 @@
 <template>
     <div>
         <Back />
-        <div class="productDetail">
+        <div v-if="!product">
+            <Loading />
+        </div>
+        <div class="loading" v-else-if="!product.title">
+            <p>No product found.</p>
+        </div>
+        <div class="productDetail" v-else>
             <img :src="product.image" />
             <div>
                 <h1>{{ product.title }}</h1>
@@ -15,6 +21,7 @@
 <script>
 import { getProduct } from '../utils/product';
 import Back from '../components/common/Back.vue';
+import Loading from '../components/common/Loading.vue';
 export default {
     name: 'Detail',
     created() {
@@ -27,6 +34,6 @@ export default {
             product: this.product,
         };
     },
-    components: { Back },
+    components: { Back, Loading },
 };
 </script>

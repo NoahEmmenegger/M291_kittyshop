@@ -1,6 +1,6 @@
 <template>
     <div class="cartItem" :set="(product = products.find((p) => p.id === cartItem.productId))">
-        <div>{{ product.title }}</div>
+        <router-link :to="`/detail/${product.id}`">{{ product.title }}</router-link>
         <div>{{ product.price.toFixed(2) }} CHF</div>
         <div>
             <button @click="removeFromCart(product.id)">-</button>

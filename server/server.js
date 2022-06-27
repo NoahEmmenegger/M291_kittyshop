@@ -45,7 +45,6 @@ app.get('/v1/products', (req, res) => {
             res.send(`Ein Fehler ist passiert! Benachrichtigen Sie den Admin.`);
         } else {
             try {
-                console.log(text);
                 res.send(text);
             } catch (e) {
                 console.error('Invalid JSON in file');
@@ -67,7 +66,7 @@ app.get('/v1/product/:id', (req, res) => {
                 if (product) {
                     res.send(JSON.stringify(product));
                 } else {
-                    res.send(`Product with id ${req.params.id} not found`);
+                    res.send({});
                 }
             } catch (e) {
                 console.error('Invalid JSON in file');
